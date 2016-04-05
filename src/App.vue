@@ -41,7 +41,7 @@
       </button>
     </div>
     <div class="btn-group">
-      <button class="btn btn-default" v-on:click="add">
+      <button class="btn btn-default">
         <span class="fa fa-font"></span>
       </button>
     </div>
@@ -70,7 +70,6 @@
 <script>
 import Math from './components/Math'
 import store from './vuex/store'
-import './assets/mathquill.js'
 
 export default {
   components: {

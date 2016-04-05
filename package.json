@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "babel-runtime": "^5.8.0",
+    "font-awesome": "^4.5.0",
     "vue": "^1.0.18",
     "vuex": "^0.6.2"
   },

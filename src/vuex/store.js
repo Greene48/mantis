@@ -9,18 +9,22 @@ Vue.use(Vuex)
 const state = {
   variables: [''],
   result: [''],
-  quills: ['quill0'],
-  active_quill: 0
+  math_areas: ['area0'],
+  active_area: 0
 }
 
 // Create an object storing various mutations. We will write the mutation
 const mutations = {
-  add_quill (state) {
-    var new_index = state.active_quill + 1
-    var new_name = 'quill' + state.quills.length
-    state.quills.splice(new_index, 0, new_name)
+  add_area (state, index) {
+    var new_index = state.active_area + 1
+    var new_name = 'area' + state.math_areas.length
+    state.math_areas.splice(new_index, 0, new_name)
     state.result.splice(new_index, 0, '')
     state.variables.splice(new_index, 0, '')
+    state.active_area = new_index
+  },
+  activate_area (state, index) {
+    state.active_area = index
   }
 }
 
