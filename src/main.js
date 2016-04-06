@@ -6,8 +6,5 @@ new Vue({
   el: 'body',
   components: {
     App
-  },
-  ready: function () {
-    document.getElementById('area0').focus()
   }
 })

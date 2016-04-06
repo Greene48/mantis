@@ -1,25 +1,30 @@
 <template>
     <div class="pane">
-        <div v-for="math in math_areas" v-math-focus="$index == active_area" id="{{math}}" class="mq-editable-field mq-math-mode" contenteditable="true" v-on:click="focus($index)" v-on:keydown.r.stop.prevent="space()" v-on:keydown.enter.stop.prevent="enter($index)"></div>
+        <div v-for="math in math_areas" v-math-focus="$index == active_area" id="area{{$index}}" class="mq-editable-field mq-math-mode" contenteditable="true" v-on:click="focus($index)" v-on:keydown.enter.stop.prevent="enter($index)" v-on:keydown.up.stop.prevent="up($index)" v-on:keydown.down.stop.prevent="down($index)" v-on:keydown.8.stop.prevent="delete_area($index)"></div>
     </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import { getAreas } from '../vuex/getters'
-import { getResults } from '../vuex/getters'
 import { get_active_area } from '../vuex/getters'
 import { add_area } from '../vuex/actions'
 import { activate_area } from '../vuex/actions'
+import { up_area } from '../vuex/actions'
+import { down_area } from '../vuex/actions'
+import { delete_area } from '../vuex/actions'
 export default {
   vuex: {
     getters: {
       math_areas: getAreas,
-      result: getResults,
       active_area: get_active_area
     },
     actions: {
       enter: add_area,
-      focus: activate_area
+      focus: activate_area,
+      up: up_area,
+      down: down_area,
+      delete_area
     }
   },
   directives: {
@@ -27,10 +32,10 @@ export default {
       if (!value) {
         return
       }
-      // var el = this.el
-      // vm.nextTick(function () {
-        // el.focus()
-      // })
+      var el = this.el
+      Vue.nextTick(function () {
+        el.focus()
+      })
     }
   }
 }

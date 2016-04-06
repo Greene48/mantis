@@ -7,9 +7,9 @@ Vue.use(Vuex)
 // We create an object to hold the initial state when
 // the app starts up
 const state = {
-  variables: [''],
-  result: [''],
-  math_areas: ['area0'],
+  math_areas: [
+    {value: '', result: '', variable: ''}
+  ],
   active_area: 0
 }
 
@@ -17,14 +17,32 @@ const state = {
 const mutations = {
   add_area (state, index) {
     var new_index = state.active_area + 1
-    var new_name = 'area' + state.math_areas.length
-    state.math_areas.splice(new_index, 0, new_name)
-    state.result.splice(new_index, 0, '')
-    state.variables.splice(new_index, 0, '')
+    // var new_name = 'area' + state.math_areas.length
+    state.math_areas.splice(new_index, 0, {value: '', result: '', variable: ''})
     state.active_area = new_index
   },
   activate_area (state, index) {
     state.active_area = index
+  },
+  up_area (state, index) {
+    if (state.active_area === 0) {
+      return
+    }
+    state.active_area = index - 1
+  },
+  down_area (state, index) {
+    if (state.active_area + 1 === state.math_areas.length) {
+      return
+    }
+    state.active_area = index + 1
+  },
+  delete_area (state, index) {
+    if (document.getSelection().extentOffset !== 0 || state.active_area === 0) {
+      return
+    }
+    var new_index = state.active_area - 1
+    state.active_area = new_index
+    state.math_areas.splice(index, 1)
   }
 }
 
