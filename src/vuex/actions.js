@@ -17,3 +17,7 @@ export const down_area = function ({ dispatch, state }, index) {
 export const delete_area = function ({ dispatch, state }, index) {
   dispatch('delete_area', index)
 }
+
+export const edit_area = function ({ dispatch, state }, index, e) {
+  dispatch('edit_area', index, e)
+}

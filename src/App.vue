@@ -54,7 +54,7 @@
       <div class="pane-sm sidebar">    
       </div>
       
-      <math></math>
+      <math v-on:click="focus(active_area)"></math>
 
     </div>
   </div>
@@ -70,12 +70,24 @@
 <script>
 import Math from './components/Math'
 import store from './vuex/store'
+import { activate_area } from './vuex/actions'
 
 export default {
   components: {
     Math
   },
-  store
+  store,
+  vuex: {
+    getters: {
+      active_area: function (state) {
+        return state.active_area
+      }
+    },
+    actions: {
+      // this isn't working. Maybe because its tied to a directive that uses nexttick
+      focus: activate_area
+    }
+  }
 }
 </script>
 

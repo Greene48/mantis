@@ -17,7 +17,6 @@ const state = {
 const mutations = {
   add_area (state, index) {
     var new_index = state.active_area + 1
-    // var new_name = 'area' + state.math_areas.length
     state.math_areas.splice(new_index, 0, {value: '', result: '', variable: ''})
     state.active_area = new_index
   },
@@ -39,10 +38,17 @@ const mutations = {
   delete_area (state, index) {
     if (document.getSelection().extentOffset !== 0 || state.active_area === 0) {
       return
+    } else if (!state.math_areas[index].value) {
+      var new_index = state.active_area - 1
+      state.active_area = new_index
+      state.math_areas.splice(index, 1)
+    } else {
+      // select all text
     }
-    var new_index = state.active_area - 1
-    state.active_area = new_index
-    state.math_areas.splice(index, 1)
+  },
+  edit_area (state, index, value) {
+    // this is undefined
+    console.log(value)
   }
 }
 
