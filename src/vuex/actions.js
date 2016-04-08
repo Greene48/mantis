@@ -18,6 +18,10 @@ export const delete_area = function ({ dispatch, state }, index) {
   dispatch('delete_area', index)
 }
 
-export const edit_area = function ({ dispatch, state }, index, e) {
-  dispatch('edit_area', index, e)
+export const edit_area = function ({ dispatch, state }, index, event) {
+  dispatch('edit_area', index, event)
+}
+
+export const ins_fctn = function ({ dispatch, state }, fctn) {
+  dispatch('ins_fctn', fctn)
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="pane">
-        <div v-for="math in math_areas" v-math-focus="$index == active_area" id="area{{$index}}" class="mq-editable-field mq-math-mode" contenteditable="true" v-on:keydown="edit($index)" v-on:keydown.enter.stop.prevent="enter($index)" v-on:keydown.up.stop.prevent="up($index)" v-on:keydown.down.stop.prevent="down($index)" v-on:keydown.8="delete_area($index)">{{math.value}}</div>
+        <div v-for="math in math_areas" v-math-focus="$index == active_area" id="area{{$index}}" class="mq-editable-field mq-math-mode" contenteditable="true" v-on:keyup.stop.prevent="edit($index, $event) | debounce 500" v-on:keydown.enter.stop.prevent="enter($index)" v-on:keydown.up.stop.prevent="up($index)" v-on:keydown.down.stop.prevent="down($index)" v-on:keydown.8.stop.prevent="delete_area($index)" v-html="math_areas[$index].value" v-on:click="focus($index)"></div>
     </div>
 </template>
 

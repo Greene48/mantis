@@ -12,20 +12,7 @@
         <span class="fa fa-repeat"></span>
       </button>
     </div>
-    <div class="btn-group">
-      <button class="btn btn-default" v-on:click="ins_fctn('sqrt')">
-        <span><strong>&radic;<span style="text-decoration:overline;">x</span></strong></span>
-      </button>
-      <button class="btn btn-default" v-on:click="ins_fctn('abs')">
-        <span><strong>|x|</strong></span>
-      </button>
-      <button class="btn btn-default" v-on:click="ins_fctn('pi')">
-        <span><strong>&pi;</strong></span>
-      </button>
-      <button class="btn btn-default" v-on:click="ins_fctn('sup')">
-        <span class="fa fa-superscript"></span>
-      </button>
-    </div>
+    <functions></functions>
     <div class="btn-group">
       <button class="btn btn-default" v-on:click="ins_fctn('lt')">
         <span><strong>&lt;</strong></span>
@@ -69,12 +56,14 @@
 
 <script>
 import Math from './components/Math'
+import Functions from './components/Functions'
 import store from './vuex/store'
 import { activate_area } from './vuex/actions'
 
 export default {
   components: {
-    Math
+    Math,
+    Functions
   },
   store,
   vuex: {
@@ -84,7 +73,7 @@ export default {
       }
     },
     actions: {
-      // this isn't working. Maybe because its tied to a directive that uses nexttick
+      // this isn't working....
       focus: activate_area
     }
   }
