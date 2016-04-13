@@ -8,3 +8,5 @@ new Vue({
     App
   }
 })
+
+Vue.config.debug = true

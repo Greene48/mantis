@@ -10,9 +10,10 @@ export const init_data = JSON.stringify([{value: '', result: '', variable: ''}])
 const state = {
   math_areas: JSON.parse(window.localStorage.getItem('math_areas') || init_data),
   active_area: JSON.parse(window.localStorage.getItem('active_area') || init_data),
-  mnts_functions: {
-    sqrt: '<span class="mq-non-leaf"><span class="mq-scaled mq-sqrt-prefix">√</span><div class="mq-non-leaf mq-sqrt-stem mq-empty"></div></span>'
-  }
+  mnts_functions: [
+    // sqrt: '<span class="mq-non-leaf"><span class="mq-scaled mq-sqrt-prefix">√</span><div v-bind:class="{ mq-empty: is_empty }" class="mq-non-leaf mq-sqrt-stem"></div></span>'
+    { type: 'Square' }
+  ]
 }
 
 // Create an object storing various mutations. We will write the mutation

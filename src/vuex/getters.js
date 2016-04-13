@@ -5,3 +5,8 @@ export function getAreas (state) {
 export function get_active_area (state) {
   return state.active_area
 }
+
+export function get_mnts_functions (state) {
+  return state.mnts_functions
+}
+
