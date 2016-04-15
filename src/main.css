@@ -743,18 +743,6 @@ fieldset[disabled] .btn {
 }
 */
 
-.in-area {
-    display: inline-block;
-}
-.in-area:empty::before {
-    content: 'cc';
-    display: inline-block;
-    background: #ccc;
-    color: #ccc;
-}
-.in-area:empty:focus::before {
-    content: 'cc';
-}
 
 .mq-editable-field {
   display: -moz-inline-box;

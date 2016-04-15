@@ -22,3 +22,18 @@
    }
  }
 </script>
+
+<style>
+.in-area {
+    display: inline-block;
+}
+.in-area:empty::before {
+    content: 'cc';
+    display: inline-block;
+    background: #ccc;
+    color: #ccc;
+}
+.in-area:empty:focus::before {
+    content: 'cc';
+}
+</style>
