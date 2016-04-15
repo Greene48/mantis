@@ -4,23 +4,23 @@ import Vuex from 'vuex'
 // Make vue aware of vuex
 Vue.use(Vuex)
 
-export const init_data = JSON.stringify([{value: '', result: '', variable: ''}])
+export const init_data = JSON.stringify([{value: '', result: '', variable: '', functions: 'Square'}])
 // We create an object to hold the initial state when
 // the app starts up
 const state = {
   math_areas: JSON.parse(window.localStorage.getItem('math_areas') || init_data),
   active_area: JSON.parse(window.localStorage.getItem('active_area') || init_data),
-  mnts_functions: [
+  mnts_functions: {
     // sqrt: '<span class="mq-non-leaf"><span class="mq-scaled mq-sqrt-prefix">√</span><div v-bind:class="{ mq-empty: is_empty }" class="mq-non-leaf mq-sqrt-stem"></div></span>'
-    { type: 'Square' }
-  ]
+    type: 'Square'
+  }
 }
 
 // Create an object storing various mutations. We will write the mutation
 const mutations = {
   add_area (state, index) {
     var new_index = state.active_area + 1
-    state.math_areas.splice(new_index, 0, {value: '', result: '', variable: ''})
+    state.math_areas.splice(new_index, 0, {value: '', result: '', variable: '', functions: ''})
     state.active_area = new_index
     window.localStorage.setItem('active_area', JSON.stringify(new_index))
   },

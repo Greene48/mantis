@@ -1,16 +1,24 @@
 <template>
-  <span class="mq-non-leaf">
-    <span class="mq-scaled mq-sqrt-prefix">√</span>
-    <!-- <div v-bind:class="{ mq-empty: root_value === null }" class="mq-non-leaf mq-sqrt-stem">{{ root_value }}</div> -->
+  <span>
+    <span class="mq-scaled mq-sqrt-prefix">√</span><!--
+    --><span  contenteditable="false" class="mq-non-leaf mq-sqrt-stem"><!--
+      --><span contenteditable="true" class="in-area">{{ root_value }}</span><!--
+    --></span>
   </span>
 </template>
 
 <script>
-// export default {
-//   data: function () {
-//     return {
-//       root_value: ''
-//     }
-//   }
-// }
+ export default {
+   data: function () {
+     return {
+       root_value: '',
+       focused: false
+     }
+   },
+   methods: {
+     toggle_focus: function () {
+       this.focused = !this.focused
+     }
+   }
+ }
 </script>

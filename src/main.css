@@ -742,19 +742,41 @@ fieldset[disabled] .btn {
   src: local("Symbola Regular"), local("Symbola"), url(font/Symbola.woff2) format("woff2"), url(font/Symbola.woff) format("woff"), url(font/Symbola.ttf) format("truetype"), url(font/Symbola.otf) format("opentype"), url(font/Symbola.svg#Symbola) format("svg");
 }
 */
+
+.in-area {
+    display: inline-block;
+}
+.in-area:empty::before {
+    content: 'cc';
+    display: inline-block;
+    background: #ccc;
+    color: #ccc;
+}
+.in-area:empty:focus::before {
+    content: 'cc';
+}
+
 .mq-editable-field {
   display: -moz-inline-box;
   
 }
-.mq-editable-field .mq-cursor {
-  border-left: 1px solid black;
+.mq-editable-field .mq-cursor[contenteditable] {
+  /* border-left: 1px solid black; */
   margin-left: -1px;
   position: relative;
   z-index: 1;
   padding: 0;
-  display: -moz-inline-box;
   display: inline-block;
 }
+.mq-editable-field .mq-cursor[contenteditable]:empty::before {
+    content: 'this';
+    display: inline-block;
+}
+
+.mq-editable-field .mq-cursor[contenteditable]:empty:focus::before {
+    content: 'Start typing';
+}
+
 .mq-editable-field .mq-cursor.mq-blink {
   visibility: hidden;
 }
@@ -793,14 +815,7 @@ fieldset[disabled] .btn {
   visibility: hidden;
   content: 'c';
 }
-.mq-editable-field .mq-cursor:only-child:after,
-.mq-editable-field .mq-textarea + .mq-cursor:last-child:after {
-  visibility: hidden;
-  content: 'c';
-}
-.mq-editable-field .mq-text-mode .mq-cursor:only-child:after {
-  content: '';
-}
+
 .mq-editable-field.mq-text-mode {
   overflow-x: auto;
   overflow-y: hidden;
@@ -844,9 +859,6 @@ fieldset[disabled] .btn {
   margin: 0;
   padding: 0;
   border-color: black;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
   box-sizing: border-box;
 }
 .mq-math-mode .mq-empty {
@@ -1021,6 +1033,9 @@ fieldset[disabled] .btn {
   -ms-transform-origin: top;
   -o-transform-origin: top;
   transform-origin: top;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .mq-math-mode .mq-sqrt-stem {
