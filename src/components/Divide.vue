@@ -1,6 +1,6 @@
 <template>
   <span>
-    <span class="mq-scaled mq-sqrt-prefix">√</span><span  contenteditable="false" class="mq-non-leaf mq-sqrt-stem"><span contenteditable="true" class="in-area">{{ root_value }}</span></span>
+    <span contenteditable="false" class="mq-fraction mq-non-leaf"><span contenteditable="true" class="mq-numerator in-area"></span><span contenteditable="true" class="mq-denominator in-area"></span></span>
   </span>
 </template>
 
@@ -8,7 +8,6 @@
  export default {
    data: function () {
      return {
-       root_value: '',
        focused: false
      }
    },

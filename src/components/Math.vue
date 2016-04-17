@@ -1,12 +1,14 @@
 <template>
     <div class="pane">
-        <div v-for="math in math_areas" v-math-focus="$index == active_area" id="area{{$index}}" class="mq-editable-field mq-math-mode" contenteditable="true" v-on:keyup.stop.prevent="edit($index, $event) | debounce 500" v-on:keydown.enter.stop.prevent="enter($index)" v-on:keydown.up.stop.prevent="up($index)" v-on:keydown.down.stop.prevent="down($index)" v-on:keydown.8.stop.prevent="delete_area($index)" v-on:click="focus($index)"><component :is="math.functions"></component></div>
+        <div v-for="math in math_areas" v-math-focus="$index == active_area" id="area{{$index}}" class="mq-editable-field mq-math-mode" contenteditable="true" v-on:keyup.stop.prevent="edit($index, $event) | debounce 500" v-on:keydown.enter.stop.prevent="enter($index)" v-on:keydown.up.stop.prevent="up($index)" v-on:keydown.down.stop.prevent="down($index)" v-on:keydown.8.stop.prevent="delete_area($index)" v-on:click="focus($index)"><component v-for="func in math.functions" :is="func" track-by:"$index"></component></div>
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import Square from './Square'
+import Multiply from './Multiply'
+import Divide from './Divide'
 import { getAreas } from '../vuex/getters'
 import { get_active_area } from '../vuex/getters'
 import { get_mnts_functions } from '../vuex/getters'
@@ -18,7 +20,9 @@ import { delete_area } from '../vuex/actions'
 import { edit_area } from '../vuex/actions'
 export default {
   components: {
-    Square: Square
+    Square: Square,
+    Multiply: Multiply,
+    Divide: Divide
   },
   vuex: {
     getters: {

@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 // Make vue aware of vuex
 Vue.use(Vuex)
 
-export const init_data = JSON.stringify([{value: '', result: '', variable: '', functions: 'Square'}])
+export const init_data = JSON.stringify([{value: '', result: '', variable: '', functions: ['Square', 'Square']}])
 // We create an object to hold the initial state when
 // the app starts up
 const state = {
@@ -20,7 +20,7 @@ const state = {
 const mutations = {
   add_area (state, index) {
     var new_index = state.active_area + 1
-    state.math_areas.splice(new_index, 0, {value: '', result: '', variable: '', functions: ''})
+    state.math_areas.splice(new_index, 0, {value: '', result: '', variable: '', functions: []})
     state.active_area = new_index
     window.localStorage.setItem('active_area', JSON.stringify(new_index))
   },
@@ -59,7 +59,9 @@ const mutations = {
     window.localStorage.setItem('math_areas', JSON.stringify(state.math_areas))
   },
   ins_fctn (state, fctn) {
-    document.execCommand('insertHTML', false, state.mnts_functions[fctn])
+    // document.execCommand('insertHTML', false, state.mnts_functions[fctn])
+    console.log(state.math_areas[state.active_area].functions)
+    state.math_areas[state.active_area].functions.push(fctn)
   }
 }
 
